@@ -1,0 +1,22 @@
+# Java
+target/
+*.class
+*.jar
+
+# Maven
+.mvn/
+!/.mvn/wrapper/maven-wrapper.jar
+
+# VS Code
+.vscode/
+
+# Angular
+node_modules/
+dist/
+.angular/
+
+# Logs
+*.log
+
+# Environment
+.env
