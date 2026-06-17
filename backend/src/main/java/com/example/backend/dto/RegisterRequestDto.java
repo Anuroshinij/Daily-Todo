@@ -21,7 +21,7 @@ public class RegisterRequestDto {
         regexp = "^[a-zA-Z0-9_]+$",
         message = "Username can contain only letters, numbers and underscore"
     )
-    private String userName;
+    private String username;
 
     @NotBlank(message = "Password is required")
     @Size(min = 8, max = 20,

@@ -8,6 +8,6 @@ import com.example.backend.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    Optional<User> findByUserName(String userName);
+    Optional<User> findByUsername(String userName);
 
 }

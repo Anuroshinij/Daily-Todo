@@ -30,14 +30,14 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("Password and Confirm Password doesn't match");
         }
 
-        if (userRepository.findByUserName(
-                dto.getUserName()).isPresent()) {
+        if (userRepository.findByUsername(
+                dto.getUsername()).isPresent()) {
 
             throw new UserNameAlreadyExistsException("UserName already exists");
         }
 
         User user = User.builder()
-                .userName(dto.getUserName())
+                .username(dto.getUsername())
                 .password(
                         passwordEncoder.encode(
                                 dto.getPassword()))
@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
 
         userRepository.save(user);
 
-        String token = jwtService.generateToken(user.getUserName());
+        String token = jwtService.generateToken(user.getUsername());
 
         return AuthResponseDto.builder()
                 .token(token)
@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
             LoginRequestDto dto) {
 
         User user = userRepository
-                .findByUserName(dto.getUserName())
+                .findByUsername(dto.getUsername())
                 .orElseThrow(() -> new InvalidCredentialsException(
                         "Invalid username or password"));
 
@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
         }
 
         String token = jwtService.generateToken(
-                user.getUserName());
+                user.getUsername());
 
         return AuthResponseDto.builder()
                 .token(token)
